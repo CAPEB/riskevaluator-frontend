@@ -11,22 +11,22 @@ import CategorieQuestion from '../../interfaces/CategorieQuestion';
   providedIn: 'root'
 })
 export class QuestionnaireService {
-  private baseUrl: string = environment.apiUrl + '/Questionnaires';
+  private baseUrl: string = environment.apiUrl + '/questionnaires';
   constructor(private http: HttpClient) {}
 
-  getAllPreconisationGlobale(questionnaireId: string): Observable<Question[]> {
-    return this.http.get<Question[]>(`${this.baseUrl}/${questionnaireId}/Questions`);
+  getAllPreconisationGlobale(questionnaireId: Number): Observable<Question[]> {
+    return this.http.get<Question[]>(`${this.baseUrl}/${questionnaireId}/questions`);
   }
 
-  getAllCategoriesQuestion(questionnaireId: string): Observable<CategorieQuestion[]> {
+  getAllCategoriesQuestion(questionnaireId: Number): Observable<CategorieQuestion[]> {
     return this.http.get<CategorieQuestion[]>(`${this.baseUrl}/${questionnaireId}/categoriesQuestion`);
   }
-  
+
   getAll(): Observable<Questionnaire[]> {
-    return this.http.get<Questionnaire[]>(`${this.baseUrl}`);
+    return this.http.get<Questionnaire[]>(`${this.baseUrl}/`);
   }
 
-  get(questionnaireId: string): Observable<Questionnaire> {
+  get(questionnaireId: Number): Observable<Questionnaire> {
     return this.http.get<Questionnaire>(`${this.baseUrl}/${questionnaireId}`);
   }
 
@@ -38,11 +38,16 @@ export class QuestionnaireService {
     return this.http.post<CategorieQuestion>(`${this.baseUrl}/${questionnaireId}/categoriesQuestion`, categorieQuestion);
   }
 
-  update(questionnaireId: string, questionnaire: Questionnaire): Observable<Questionnaire | string> {
-    return this.http.put<Questionnaire>(`${this.baseUrl}/${questionnaireId}`, questionnaire);
+  update(questionnaire: Questionnaire): Observable<Questionnaire | string> {
+    return this.http.put<Questionnaire>(`${this.baseUrl}/`, questionnaire);
   }
 
-  delete(questionId: string): Observable<Questionnaire | string> {
+  save(questionnaire: Questionnaire): Observable<Questionnaire | string> {
+    return this.http.post<Questionnaire>(`${this.baseUrl}/`, questionnaire);
+  }
+
+
+  delete(questionId: Number): Observable<Questionnaire | string> {
     return this.http.delete<Questionnaire>(`${this.baseUrl}/${questionId}`);
   }
 }

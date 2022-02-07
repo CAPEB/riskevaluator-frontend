@@ -1,0 +1,32 @@
+<div class="container">
+  <ng-container *ngIf="(questionnairesInput$ | async) as result" [ngSwitch]="result.dataState" >
+    <ng-container *ngSwitchCase="DataStateEnum.LOADING">
+
+      <ngx-skeleton-loader
+        count="5"
+        [theme]="{'background-color': '#323744',
+        height:'50px', 'border-radius':'20px'}"
+      >
+      </ngx-skeleton-loader>
+    </ng-container>
+    <ng-container *ngSwitchCase="DataStateEnum.ERROR">
+      <div class="alert-danger">
+        {{result.errorMessage}}
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+      <table class="table">
+        <tr>
+          <th>ID</th><th>Thematique</th>
+        </tr>
+        <app-questionnaire
+          [questionnaire]="p"
+          *ngFor="let p of result.data" style="display: contents">
+
+        </app-questionnaire>
+
+      </table>
+    </ng-container>
+  </ng-container>
+</div>
+

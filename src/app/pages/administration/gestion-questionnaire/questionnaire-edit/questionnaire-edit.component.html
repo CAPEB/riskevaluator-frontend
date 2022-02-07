@@ -1,0 +1,17 @@
+<div class="container" *ngIf="questionnaireFormGroup">
+  <form [formGroup]="questionnaireFormGroup">
+    <div class="form-group">
+      <label>ID</label>
+      <input [readonly]=true type="text" class="form-control" formControlName="id">
+    </div>
+    <div class="form-group">
+      <label>Thematique</label>
+      <input type="text" class="form-control" formControlName="thematique"
+             [ngClass]="{'is-invalid':submitted && questionnaireFormGroup.controls?.['thematique'].errors}">
+      <div *ngIf="submitted && questionnaireFormGroup.controls?.['thematique'].errors" class="invalid-feedback">
+        <div *ngIf="questionnaireFormGroup.controls?.['thematique'].errors?.['required']">Thematique is Required</div>
+      </div>
+    </div>
+    <button class="btn btn-success" (click)="onUpdateProduct()">Save</button>
+  </form>
+</div>

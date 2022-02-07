@@ -1,0 +1,24 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">administration</a></li>
+    <li class="breadcrumb-item active">gestion questionnaire</li>
+  </ol>
+</nav>
+
+<div class="card">
+  <div class="header">
+    <h2 class="title">Liste des questionnaires</h2>
+  </div>
+  <div class="content">
+    <form #f="ngForm">
+
+      <div class="form-group">
+        <label for="questionnaire"> Search questionnaire</label>
+        <input [(ngModel)]="filter.name" id="questionnaire" name="from" class="form-control">
+      </div>
+
+      <button (click)="onSearch(f.value)" [disabled]="!f?.valid" class="btn btn-primary">Search</button>
+      <button (click)="onNew(f.value)" [disabled]="!f?.valid" class="btn btn-primary"> NEW </button>
+    </form>
+  </div>
+</div>

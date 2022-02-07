@@ -18,6 +18,13 @@ import { GestionMetiersComponent } from '@pages/administration/gestion-metiers/g
 import { GestionQuestionnaireComponent } from '@pages/administration/gestion-questionnaire/gestion-questionnaire.component';
 import { GestionComptesComponent } from '@pages/administration/gestion-comptes/gestion-comptes.component';
 import { GestionQuestionComponent } from './pages/administration/gestion-question/gestion-question.component';
+import { QuestionnaireComponent } from '@pages/administration/gestion-questionnaire/questionnaire/questionnaire.component';
+import { QuestionnaireNewComponent } from '@pages/administration/gestion-questionnaire/questionnaire-new/questionnaire-new.component';
+import {
+  QuestionnaireEditComponent
+} from "@pages/administration/gestion-questionnaire/questionnaire-edit/questionnaire-edit.component";
+
+
 
 const administration: Routes = [
   {
@@ -26,7 +33,7 @@ const administration: Routes = [
   },
   {
     path: 'gestion-questionnaire',
-    component: GestionQuestionnaireComponent
+    component: GestionQuestionnaireComponent,
   },
   {
     path: 'gestion-question',
@@ -35,8 +42,15 @@ const administration: Routes = [
   {
     path: 'gestion-compte',
     component: GestionComptesComponent
+  } ,
+  {
+    path: 'gestion-questionnaire/new-questionnaire',
+    component: QuestionnaireNewComponent
+  },
+  {
+    path: 'edit-questionnaire/:id',
+    component: QuestionnaireEditComponent
   }
-
 ]
 const visitors: Routes = [
   {

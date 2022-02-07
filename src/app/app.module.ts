@@ -15,7 +15,7 @@ import {ProfileComponent} from '@pages/profile/profile.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RegisterComponent} from '@modules/register/register.component';
 import {DashboardComponent} from '@pages/dashboard/dashboard.component';
-import {ToastrModule} from 'ngx-toastr';
+import { ToastrModule, ToastrService } from "ngx-toastr";
 import {MessagesComponent} from '@modules/main/header/messages/messages.component';
 import {NotificationsComponent} from '@modules/main/header/notifications/notifications.component';
 import {ButtonComponent} from './components/button/button.component';
@@ -42,6 +42,15 @@ import { ListItemComponent } from './components/list/list-item/list-item.compone
 import { MetierFormComponent } from './pages/administration/gestion-metiers/metier-form/metier-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorModalComponent } from './components/error-modal/error-modal.component';
+import { QuestionnaireComponent } from './pages/administration/gestion-questionnaire/questionnaire/questionnaire.component';
+import { ListCategorieQuestionComponent } from './pages/administration/gestion-questionnaire/questionnaire/list-categorie-question/list-categorie-question.component';
+import { ListPreconisationGlobaleComponent } from './pages/administration/gestion-questionnaire/questionnaire/list-preconisation-globale/list-preconisation-globale.component';
+import { QuestionnaireListComponent } from './pages/administration/gestion-questionnaire/questionnaire-list/questionnaire-list.component';
+import { QuestionnaireNewComponent } from './pages/administration/gestion-questionnaire/questionnaire-new/questionnaire-new.component';
+import { QuestionnaireEditComponent } from './pages/administration/gestion-questionnaire/questionnaire-edit/questionnaire-edit.component';
+import { QuestionnaireHeadComponent } from './pages/administration/gestion-questionnaire/questionnaire-head/questionnaire-head.component';
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 registerLocaleData(localeEn, 'en-EN');
 
@@ -78,6 +87,15 @@ registerLocaleData(localeEn, 'en-EN');
         ListItemComponent,
         MetierFormComponent,
         ErrorModalComponent,
+        QuestionnaireComponent,
+        ListCategorieQuestionComponent,
+        ListPreconisationGlobaleComponent,
+        QuestionnaireListComponent,
+        QuestionnaireNewComponent,
+        QuestionnaireEditComponent,
+        QuestionnaireHeadComponent,
+        ConfirmationDialogComponent
+
     ],
   imports: [
     BrowserModule,
@@ -91,9 +109,10 @@ registerLocaleData(localeEn, 'en-EN');
       preventDuplicates: true
     }),
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgxSkeletonLoaderModule
   ],
-    providers: [authInterceptorProviders],
+    providers: [authInterceptorProviders, ToastrService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

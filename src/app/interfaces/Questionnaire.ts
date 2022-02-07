@@ -1,4 +1,4 @@
 export default interface Questionnaire {
-    idQuestionnaire: string;
+    idQuestionnaire: Number;
     thematique: string;
 }

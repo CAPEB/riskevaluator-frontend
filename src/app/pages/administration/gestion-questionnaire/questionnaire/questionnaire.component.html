@@ -1,0 +1,12 @@
+<tr *ngIf="questionnaire">
+  <td>{{questionnaire.idQuestionnaire}}</td>
+  <td>{{questionnaire.thematique}}</td>
+  <td>
+    <button (click)="onEdit(questionnaire)" class="btn btn-success"><i class="fas fa-edit"></i></button>
+  </td>
+  <td>
+
+    <button (click)="onDelete(questionnaire)" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+
+  </td>
+</tr>
